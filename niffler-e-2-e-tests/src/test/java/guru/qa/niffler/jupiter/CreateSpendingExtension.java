@@ -8,9 +8,9 @@ import org.junit.platform.commons.support.AnnotationSupport;
 
 import java.util.Date;
 
-public class SpendExtension implements BeforeEachCallback, ParameterResolver {
+public class CreateSpendingExtension implements BeforeEachCallback{
 
-    public static final ExtensionContext.Namespace NAMESPACE = ExtensionContext.Namespace.create(SpendExtension.class);
+    public static final ExtensionContext.Namespace NAMESPACE = ExtensionContext.Namespace.create(CreateSpendingExtension.class);
 
 
     private final SpendApiClient spendApiClient = new SpendApiClient();
@@ -18,7 +18,7 @@ public class SpendExtension implements BeforeEachCallback, ParameterResolver {
 
     @Override
     public void beforeEach(ExtensionContext context) throws Exception {
-        AnnotationSupport.findAnnotation(context.getRequiredTestMethod(), Spend.class)
+        AnnotationSupport.findAnnotation(context.getRequiredTestMethod(), Spending.class)
                 .ifPresent(
                         anno ->{
                             SpendJson spendJson = new SpendJson(
@@ -42,13 +42,4 @@ public class SpendExtension implements BeforeEachCallback, ParameterResolver {
                 );
     }
 
-    @Override
-    public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-        return parameterContext.getParameter().getType().isAssignableFrom(SpendJson.class);
-    }
-
-    @Override
-    public SpendJson resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-        return extensionContext.getStore(NAMESPACE).get(extensionContext.getUniqueId(), SpendJson.class);
-    }
 }
