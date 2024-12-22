@@ -71,7 +71,7 @@
 После установки и запуска docker daemon необходимо убедиться в работе команд docker, например `docker -v`:
 
 ```posh
-User-MacBook-Pro ~ % docker -v
+$ docker -v
 Docker version 20.10.14, build a224086
 ```
 
@@ -86,7 +86,7 @@ docker pull confluentinc/cp-kafka:7.3.2
 После `pull` вы увидите спуленный image командой `docker images`
 
 ```posh
-mitriis-MacBook-Pro ~ % docker images            
+$ docker images            
 REPOSITORY                 TAG              IMAGE ID       CREATED         SIZE
 postgres                   15.1             9f3ec01f884d   10 days ago     379MB
 confluentinc/cp-kafka      7.3.2            db97697f6e28   12 months ago   457MB
@@ -105,7 +105,7 @@ docker volume create pgdata
 Запустив скрипт (Для Windows необходимо использовать bash terminal: gitbash, cygwin или wsl)
 
 ```posh
-User-MacBook-Pro  niffler % bash localenv.sh
+$ bash localenv.sh
 ```
 
 Или выполнив последовательно команды, для *nix:
@@ -156,7 +156,7 @@ chmod +x init-database.sh
 Версию установленной Java необходимо проверить командой `java -version`
 
 ```posh
-User-MacBook-Pro ~ % java -version
+$ java -version
 openjdk version "21.0.1" 2023-10-17 LTS
 OpenJDK Runtime Environment Temurin-21.0.1+12 (build 21.0.1+12-LTS)
 OpenJDK 64-Bit Server VM Temurin-21.0.1+12 (build 21.0.1+12-LTS, mixed mode)
@@ -178,13 +178,13 @@ OpenJDK 64-Bit Server VM Temurin-21.0.1+12 (build 21.0.1+12-LTS, mixed mode)
 для REST:
 
 ```posh
-User-MacBook-Pro niffler % cd niffler-ng-client
+$ cd niffler-ng-client
 ```
 
 или для GraphQL **_(временно недоступно)_**:
 
 ```posh
-User-MacBook-Pro niffler % cd niffler-ng-client-gql
+$ cd niffler-ng-client-gql
 ```
 
 #### 2. Запустить фронтенд в режиме preview (сначала обновить зависимости)
@@ -206,7 +206,7 @@ User-MacBook-Pro niffler-ng-client % npm run build:dev
 - Запустить сервис auth
 
 ```posh
-User-MacBook-Pro niffler % cd niffler-auth
+$ cd niffler-auth
 User-MacBook-Pro niffler-auth % gradle bootRun --args='--spring.profiles.active=local'
 ```
 
